@@ -1,19 +1,21 @@
 package text_08;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
-public class Article {
+public class Article extends Object{
 	int id;
 	String title;
 	String body;
-	String regDate;
-	String updateDate;
+	LocalDateTime regDate;
+	LocalDateTime updateDate;
+	
 	public Article(int id, String title, String body) {
 		this.id = id;
 		this.title = title;
 		this.body = body;
 	}
-	public Article(int id,String title,String body, String regDate, String updateDate) {
+	public Article(int id,String title,String body, LocalDateTime regDate, LocalDateTime updateDate) {
 		this.id = id;
 		this.title = title;
 		this.body = body;
@@ -24,6 +26,9 @@ public class Article {
 		this.id = (int) articleMap.get("id");
 		this.title = (String) articleMap.get("title");
 		this.body = (String) articleMap.get("body");
+		this.regDate = (LocalDateTime) articleMap.get("regDate");
+		this.updateDate = (LocalDateTime) articleMap.get("updateDate");
+	
 	}
 	@Override
 	public String toString() {
