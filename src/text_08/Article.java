@@ -1,5 +1,7 @@
 package text_08;
 
+import java.util.Map;
+
 public class Article {
 	int id;
 	String title;
@@ -17,6 +19,11 @@ public class Article {
 		this.body = body;
 		this.regDate = regDate;
 		this.updateDate = updateDate;
+	}
+	public Article(Map<String, Object> articleMap) {
+		this.id = (int) articleMap.get("id");
+		this.title = (String) articleMap.get("title");
+		this.body = (String) articleMap.get("body");
 	}
 	@Override
 	public String toString() {
