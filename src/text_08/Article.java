@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 public class Article extends Object{
-	int id;
-	String title;
-	String body;
-	LocalDateTime regDate;
-	LocalDateTime updateDate;
+	public int id;
+	public String title;
+	public String body;
+	public LocalDateTime regDate;
+	public LocalDateTime updateDate;
 	
 	public Article(int id, String title, String body) {
 		this.id = id;
