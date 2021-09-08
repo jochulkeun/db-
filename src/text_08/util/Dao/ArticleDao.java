@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import text_08.Article;
 import text_08.util.DBUtil;
 import text_08.util.SecSql;
+import text_08.util.dto.Article;
 
 public class ArticleDao {
 

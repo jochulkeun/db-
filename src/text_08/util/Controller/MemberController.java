@@ -3,9 +3,8 @@ package text_08.util.Controller;
 import java.sql.Connection;
 import java.util.Scanner;
 
-import text_08.util.DBUtil;
-import text_08.util.SecSql;
 import text_08.util.Service.MemberService;
+import text_08.util.dto.Member;
 
 public class MemberController extends Controller {
 	private MemberService memberService;
@@ -82,9 +81,61 @@ public class MemberController extends Controller {
 			}
 			break;
 		}
-		memberService.join(loginId,loginPw,name);
+		memberService.join(loginId, loginPw, name);
 
 		System.out.printf("%s님 환영합니다.\n", name);
+	}
+
+	public void login(String cmd) {
+		String loginId;
+		String loginPw;
+
+		while (true) {
+			System.out.println("== 로그인 ==");
+			System.out.printf("로그인 아이디 : ");
+			loginId = scanner.nextLine();
+
+			if (loginId.length() == 0) {
+				System.out.println("로그인 아이디를 확인하세요");
+				continue;
+			}
+
+			boolean isLoginIdDup = memberService.isLoginIdDup(loginId);
+
+			if (isLoginIdDup == false) {
+				System.out.printf("%s는 존재하지 않는 아이디 입니다.\n", loginId);
+				continue;
+			}
+
+			break;
+		}
+		Member member = memberService.getMemberByLogin(loginId);
+
+		int tryMaxCount = 3;
+		int tryCount = 1;
+
+		while (true) {
+			if(tryCount > tryMaxCount) {
+				System.out.println("다음에 다시 확인후 시도해주세요");
+				break;
+			}
+			System.out.printf("로그인 비밀번호 : ");
+			loginPw = scanner.nextLine().trim();
+
+			if (loginPw.length() == 0) {
+				System.out.println("로그인 비밀번호를 확인하세요");
+				continue;
+			}
+
+			if (member.loginPw.equals(loginPw) == false) {
+				tryCount++;
+				System.out.printf("비밀번호가 일치하지 않습니다. \n");
+				continue;
+			}
+			System.out.printf("%s 님 환영합니다.\n",member.name);
+			break;
+		}
+
 	}
 
 }

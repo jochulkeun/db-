@@ -6,9 +6,8 @@ import java.util.List;
 
 import java.util.Scanner;
 
-import text_08.Article;
-
 import text_08.util.Service.ArticleService;
+import text_08.util.dto.Article;
 
 public class ArticleController extends Controller {
 

@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-
 import text_08.util.Controller.ArticleController;
 import text_08.util.Controller.MemberController;
 
@@ -58,12 +57,14 @@ public class App {
 
 	private int doAction(Connection conn, Scanner scanner, String cmd) {
 
-		MemberController memberController = new MemberController(conn,scanner);
-		ArticleController articleController = new ArticleController(conn,scanner);
-		
+		MemberController memberController = new MemberController(conn, scanner);
+		ArticleController articleController = new ArticleController(conn, scanner);
 
 		if (cmd.equals("member join")) {
 			memberController.join(cmd);
+		}
+		if (cmd.equals("member login")) {
+			memberController.login(cmd);
 		}
 		if (cmd.equals("article write")) {
 			articleController.doWrite(cmd);

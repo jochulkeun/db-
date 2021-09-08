@@ -1,9 +1,11 @@
 package text_08.util.Dao;
 
 import java.sql.Connection;
+import java.util.Map;
 
 import text_08.util.DBUtil;
 import text_08.util.SecSql;
+import text_08.util.dto.Member;
 
 public class MemberDao {
 	private Connection conn;
@@ -35,5 +37,19 @@ public class MemberDao {
 		return id;
 		
 	}
+	public Member getMemberByLogin(String loginId) {
+		SecSql sql = new SecSql();
+
+		sql.append("SELECT *");
+		sql.append("FROM member");
+		sql.append("WHERE loginId = ?", loginId);
+
+		Map<String, Object> memberMap = DBUtil.selectRow(conn, sql);
 	
+		if(memberMap.isEmpty()) {
+			return null;
+		}
+		
+		return new Member(memberMap); 
+	}
 }

@@ -3,8 +3,8 @@ package text_08.util.Service;
 import java.sql.Connection;
 import java.util.List;
 
-import text_08.Article;
 import text_08.util.Dao.ArticleDao;
+import text_08.util.dto.Article;
 
 public class ArticleService {
 	private ArticleDao articleDao;
